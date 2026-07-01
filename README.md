@@ -15,6 +15,12 @@ Flujo de procesamiento de extremo a extremo para un sistema N-trailer generaliza
 4. **planifica** una ruta libre de colisiones óptima desde la posición inicial a la meta usando **RRT*** sobre el mapa de SLAM con clearances de seguridad,
 5. **controla** el robot en lazo cerrado siguiendo la trayectoria calculada mediante un controlador **Pure Pursuit**.
 
+## Simulación de Navegación Completa
+
+<p align="center">
+  <img src="media/episode.gif" alt="G2T Navigation Simulation" width="600"/>
+</p>
+
 ## Estructura del repositorio
 
 ```
