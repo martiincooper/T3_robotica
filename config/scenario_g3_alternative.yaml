@@ -1,0 +1,91 @@
+# ============================================================================
+# Guía 3 — Escenario Alternativo (Diferente paisaje de obstáculos y ruta)
+# ============================================================================
+
+world:
+  size: [24.0, 18.0]        # extensión del plano [x, y] (m)
+  origin: [0.0, 0.0]
+
+vehicle:
+  L0: 1.20
+  d0: 0.0
+  L1: 1.50
+  d1: 0.0
+  L2: 1.50
+  body_length_0: 1.80
+  body_length_1: 1.60
+  body_length_2: 1.60
+  W0: 0.80
+  W1: 0.70
+  W2: 0.70
+  psi_limit_deg: 75.0
+
+lidar:
+  mount_xy: [0.9, 0.0]
+  mount_yaw_deg: 180.0
+  range_min: 0.05
+  range_max: 30.0
+  fov_deg: 270.0
+  angular_resolution_deg: 0.25
+  rate_hz: 40.0
+  range_noise_std: 0.02
+  dropout_prob: 0.01
+  mixed_pixel_prob: 0.002
+
+# Inicio y meta alternativos (arriba izquierda a abajo derecha)
+start:  {x: -9.0, y: 6.0, theta_deg: 0.0,  psi1_deg: 0.0, psi2_deg: 0.0}
+goal:   {x:  9.0, y: -6.0, theta_deg: 0.0}
+goal_tolerance: {pos: 0.5, theta_deg: 15.0}
+
+landmarks:
+  - {id: 0,  x: -6.0, y:  3.0, radius: 0.30}
+  - {id: 1,  x: -4.5, y: -1.0, radius: 0.30}
+  - {id: 2,  x: -2.0, y:  5.0, radius: 0.25}
+  - {id: 3,  x: -1.0, y: -4.0, radius: 0.35}
+  - {id: 4,  x:  1.5, y:  2.0, radius: 0.30}
+  - {id: 5,  x:  3.0, y: -2.5, radius: 0.25}
+  - {id: 6,  x:  5.5, y:  4.0, radius: 0.30}
+  - {id: 7,  x:  6.5, y: -0.5, radius: 0.35}
+  - {id: 8,  x:  9.5, y: -2.8, radius: 0.25}
+  - {id: 9,  x: -7.5, y: -4.5, radius: 0.30}
+
+narrow_gap:
+  enable: true
+  center: [0.5, -0.5]
+  gap_width: 2.0
+  radius: 0.30
+
+walls:
+  enable: true
+  thickness: 0.20
+
+# Ruta de referencia con curvas diferentes para el escenario alternativo
+reference_waypoints:
+  - [-9.0,  6.0]
+  - [-6.0,  5.0]
+  - [-3.5,  2.0]
+  - [-1.0, -1.2]
+  - [ 0.5, -0.5]
+  - [ 3.5,  1.0]
+  - [ 6.0, -1.5]
+  - [ 8.0, -4.5]
+  - [ 9.0, -6.0]
+
+driving:
+  v_nominal: 1.0
+  lookahead: 1.5
+  control_rate_hz: 50.0
+  dt: 0.02
+
+odometry:
+  v_noise_std: 0.05
+  w_noise_std: 0.02
+  rate_hz: 50.0
+
+imu:
+  gyro_z_noise_std: 0.01
+  rate_hz: 100.0
+
+output:
+  dataset_dir: "datasets/g3_alternative"
+  seed: 42
